@@ -1,0 +1,214 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Стили формы */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Кнопки */
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+#addBtn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#clearBtn {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Таблица записей */
+#recordsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#recordsTable th, #recordsTable td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+#recordsTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #333;
+}
+
+#recordsTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#recordsTable tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Кнопка удаления */
+.delete-btn {
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.delete-btn:hover {
+    background-color: #ff0000;
+    transform: scale(1.1);
+}
+
+/* Сообщения */
+.empty-message {
+    text-align: center;
+    color: #777;
+    margin-top: 20px;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 2px dashed #ddd;
+}
+
+.storage-info {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #e8f5e8;
+    border-radius: 8px;
+    border-left: 4px solid #4CAF50;
+}
+
+/* Ссылка на GitHub */
+.github-link {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+}
+
+.github-link a {
+    color: #333;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.github-link a:hover {
+    color: #4CAF50;
+    border-color: #4CAF50;
+    background-color: #f8fff8;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    .buttons {
+        flex-direction: column;
+    }
+    
+    #recordsTable {
+        font-size: 14px;
+    }
+    
+    #recordsTable th, #recordsTable td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    #recordsTable {
+        display: block;
+        overflow-x: auto;
+    }
+}
