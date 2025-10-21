@@ -1,0 +1,43 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - heading "Форма ввода данных" [level=1] [ref=e3]
+  - generic [ref=e4]: "💾 Данные сохраняются локально в вашем браузере | Записей: 1"
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]: "Имя:"
+      - textbox "Имя:" [ref=e8]:
+        - /placeholder: Введите ваше имя
+    - generic [ref=e9]:
+      - generic [ref=e10]: "Фамилия:"
+      - textbox "Фамилия:" [ref=e11]:
+        - /placeholder: Введите вашу фамилию
+    - generic [ref=e12]:
+      - generic [ref=e13]: "Номер (12 цифр):"
+      - textbox "Номер (12 цифр):" [ref=e14]:
+        - /placeholder: "123456789012"
+    - generic [ref=e15]:
+      - generic [ref=e16]: "Дата рождения:"
+      - textbox "Дата рождения:" [ref=e17]:
+        - /placeholder: ДД.ММ.ГГГГ
+    - generic [ref=e18]:
+      - button "✅ Добавить" [ref=e19] [cursor=pointer]
+      - button "🗑️ Очистить все" [active] [ref=e20] [cursor=pointer]
+  - table [ref=e22]:
+    - rowgroup [ref=e23]:
+      - row "Имя Фамилия Номер телефона Дата рождения Действие" [ref=e24]:
+        - cell "Имя" [ref=e25]
+        - cell "Фамилия" [ref=e26]
+        - cell "Номер телефона" [ref=e27]
+        - cell "Дата рождения" [ref=e28]
+        - cell "Действие" [ref=e29]
+    - rowgroup [ref=e30]:
+      - row "Мария Иванова 123456789012 20.08.1995 ✕" [ref=e31]:
+        - cell "Мария" [ref=e32]
+        - cell "Иванова" [ref=e33]
+        - cell "123456789012" [ref=e34]
+        - cell "20.08.1995" [ref=e35]
+        - cell "✕" [ref=e36]:
+          - button "✕" [ref=e37] [cursor=pointer]
+```

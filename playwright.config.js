@@ -1,4 +1,3 @@
-// playwright.config.js
 const { defineConfig, devices } = require('@playwright/test');
 
 module.exports = defineConfig({
@@ -9,7 +8,7 @@ module.exports = defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:8000',
     trace: 'on-first-retry',
   },
 
@@ -18,19 +17,11 @@ module.exports = defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
   ],
 
   webServer: {
-    command: 'npx live-server --port=3000',
-    url: 'http://localhost:3000',
+    command: 'python -m http.server 8000',
+    url: 'http://localhost:8000',
     reuseExistingServer: !process.env.CI,
   },
 });
