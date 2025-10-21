@@ -1,0 +1,16 @@
+{
+  "name": "form-project",
+  "version": "1.0.0",
+  "description": "Форма ввода данных с автотестами",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "serve": "python -m http.server 3000",
+    "dev": "npx live-server --port=3000"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.0.0"
+  }
+}
