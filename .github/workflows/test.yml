@@ -14,6 +14,7 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: 18
+        cache: 'npm'
     - run: npm ci
     - run: npx eslint . --ext .js  # если есть ESLint
 
@@ -24,6 +25,7 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: 18
+        cache: 'npm'
     - run: npm ci
     - run: npm test  # если есть unit тесты
 
@@ -34,6 +36,7 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
+    
     - uses: actions/setup-node@v4
       with:
         node-version: 18
@@ -42,7 +45,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
       
-    - name: Install Playwright
+    - name: Install Playwright Browsers
       run: npx playwright install --with-deps
         
     - name: Run Playwright tests
