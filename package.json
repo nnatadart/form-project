@@ -1,12 +1,13 @@
 {
-  "name": "my-form-project",
+  "name": "form-project",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "test": "npx playwright test",
-    "test:ui": "npx playwright test --ui",
-    "serve": "python -m http.server 8000"
+    "test": "playwright test",
+    "serve": "npx serve -s . -p 3000"
   },
   "devDependencies": {
-    "@playwright/test": "^1.40.0"
+    "@playwright/test": "^1.40.0",
+    "serve": "^14.2.0"
   }
 }
