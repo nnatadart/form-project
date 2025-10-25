@@ -7,18 +7,9 @@ module.exports = defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
-  
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:8000',
     trace: 'on-first-retry',
-  },
-
-  // Добавьте webServer для запуска вашего приложения
-  webServer: {
-    command: 'npx serve -s . -p 3000',
-    url: 'http://localhost:3000',
-    reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000,
   },
 
   projects: [
@@ -27,4 +18,10 @@ module.exports = defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
+
+  webServer: {
+    command: 'python -m http.server 8000',
+    url: 'http://localhost:8000',
+    reuseExistingServer: !process.env.CI,
+  },
 });
