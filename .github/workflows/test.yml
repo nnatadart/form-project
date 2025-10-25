@@ -23,9 +23,8 @@ jobs:
       run: npm ci
       
     - name: Install Playwright
-      uses: microsoft/playwright@v1.40.0
-      with:
-        install-deps: true
+      run: |
+        npx playwright install --with-deps
         
     - name: Run Playwright tests
       run: npx playwright test
