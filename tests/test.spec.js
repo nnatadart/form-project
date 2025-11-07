@@ -54,7 +54,7 @@ test('Валидация формы - пустые поля', async ({ page }) =
   await expect(dateError).toBeVisible();
 });
 
-test('Валидация формы - некорректный телефон', async ({ page }) => {
+test('Валидация формы - некорректный номер', async ({ page }) => {
   await page.goto('/');
 
   // Заполняем обязательные поля
@@ -62,14 +62,14 @@ test('Валидация формы - некорректный телефон', 
   await page.fill('#lastName', 'Тестов');
   await page.fill('#date', '01.01.2000');
 
-  // Вводим некорректный номер телефона
+  // Вводим некорректный номер
   await page.fill('#phone', '123');
   await page.click('#addBtn');
 
   // Ждем немного
   await page.waitForTimeout(500);
 
-  // Проверяем ошибку телефона
+  // Проверяем ошибку 
   await expect(page.locator('#phoneError')).toBeVisible();
 });
 
