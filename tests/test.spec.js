@@ -1,6 +1,23 @@
 const { test, expect } = require('@playwright/test');
 const { asyncWrapProviders } = require('async_hooks');
-
+const element = [
+{
+  locator: (page) =>page.locator('#firstNameError'),
+  name: "firstNameError"
+},
+{
+  locator: (page) =>page.locator('#lastNameError'),
+  name: "lastNameError"
+},
+{
+  locator: (page) =>page.locator('#phoneError'),
+  name: "phoneError"
+},
+{
+  locator: (page) =>page.locator('#dateError'),
+  name: "dateError"
+}
+];
  test.beforeEach ( async ({page}) => {
   // Переходим на страницу с формой
 await page.goto('/');
@@ -45,37 +62,41 @@ test('Валидация формы - пустые поля', async ({ page }) =
   // Ждем немного и проверяем сообщения об ошибках
   await page.waitForTimeout(500);
 
-  // Проверяем, что появились сообщения об ошибках
-  // Используем toBeVisible() или toHaveCSS('display', 'block') в зависимости от того, как показываются ошибки
-  const firstNameError = page.locator('#firstNameError');
-  const lastNameError = page.locator('#lastNameError');
-  const phoneError = page.locator('#phoneError');
-  const dateError = page.locator('#dateError');
 
   // Проверяем разными способами, так как ошибки могут показываться через display: block или display: flex
-  await expect(firstNameError).toBeVisible();
-  await expect(lastNameError).toBeVisible();
-  await expect(phoneError).toBeVisible();
-  await expect(dateError).toBeVisible();
+  element.forEach (({locator, name}) => {
+    test.step (`Проверка валидации формы:  проверяем параметр ${name}`, async () =>{ 
+ await expect(locator(page)).toBeVisible();
+});
+});
 });
 
 test('Валидация формы - некорректный номер', async ({ page }) => {
   
 
   // Заполняем обязательные поля
-  await page.fill('#firstName', 'Тест');
+  test.step ('Заполняем обязательные поля', async () => {
+      await page.fill('#firstName', 'Тест');
   await page.fill('#lastName', 'Тестов');
   await page.fill('#date', '01.01.2000');
-
-  // Вводим некорректный номер
+  });
+ // Вводим некорректный номер
+test.step ('Вводим некорректный номер', async () => {
   await page.fill('#phone', '123');
   await page.click('#addBtn');
+});
+// Ждем немного
+ await test.step ('Ждем немного', async () => {
+ await page.waitForTimeout(5000);
+});
 
-  // Ждем немного
-  await page.waitForTimeout(500);
 
-  // Проверяем ошибку 
-  await expect(page.locator('#phoneError')).toBeVisible();
+// Проверяем ошибку 
+test.step ('Проверяем ошибку', async () => {
+ await expect(page.locator('#phoneError')).toBeVisible();
+});
+ 
+
 });
 
 test('Валидация формы - корректные данные', async ({ page }) => {
