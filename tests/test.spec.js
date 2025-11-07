@@ -1,8 +1,13 @@
 const { test, expect } = require('@playwright/test');
+const { asyncWrapProviders } = require('async_hooks');
+
+ test.beforeEach ( async ({page}) => {
+  // Переходим на страницу с формой
+await page.goto('/');
+ });
 
 test('Добавление и удаление записи в форме', async ({ page }) => {
-  // Переходим на страницу с формой
-  await page.goto('/');
+
 
   // Проверяем, что форма загрузилась
   await expect(page.locator('h1')).toHaveText('Форма ввода данных');
@@ -32,7 +37,7 @@ test('Добавление и удаление записи в форме', asyn
 });
 
 test('Валидация формы - пустые поля', async ({ page }) => {
-  await page.goto('/');
+
 
   // Пытаемся отправить пустую форму
   await page.click('#addBtn');
@@ -55,7 +60,7 @@ test('Валидация формы - пустые поля', async ({ page }) =
 });
 
 test('Валидация формы - некорректный номер', async ({ page }) => {
-  await page.goto('/');
+  
 
   // Заполняем обязательные поля
   await page.fill('#firstName', 'Тест');
@@ -74,7 +79,7 @@ test('Валидация формы - некорректный номер', asyn
 });
 
 test('Валидация формы - корректные данные', async ({ page }) => {
-  await page.goto('/');
+  
 
   // Заполняем форму корректными данными
   await page.fill('#firstName', 'Мария');
@@ -95,7 +100,7 @@ test('Валидация формы - корректные данные', async 
 });
 
 test('Очистка всех записей', async ({ page }) => {
-  await page.goto('/');
+  
 
   // Добавляем запись
   await page.fill('#firstName', 'Анна');
